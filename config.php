@@ -3,16 +3,16 @@
 
 $sessionLifetime = 2592000;                                 // 30 days in seconds
 $sessionCookiePath = '/';                                   // Usually '/'
-$sessionCookieDomain = 'localhost';                 // e.g. 'example.com'
+$sessionCookieDomain = '';                                  // e.g. 'example.com'
 $sessionCookieSecure = false;                               // true if using HTTPS
 $sessionCookieHttpOnly = true;
-$sessionCookieSameSite = 'Lax';                            // could be 'Strict', 'Lax', 'None' etc.
+$sessionCookieSameSite = 'Lax';                             // could be 'Strict', 'Lax', 'None' etc.
 $sessionName = 'VAIO_SESSION';
 
-$dbHost = 'localhost';
-$dbName = 'archivecms_db';
-$dbUser = 'archivecms_user';
-$dbPass = 'testing123';
+$dbHost = '';
+$dbName = '';
+$dbUser = '';
+$dbPass = '';
 
 $dsn = "mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4";
 $pdoOptions = [
