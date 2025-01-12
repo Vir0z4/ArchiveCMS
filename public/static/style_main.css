@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("https://archive.vaiolibrary.com/lib/tpl/dokukit/images/bg_body_V2.jpg") center no-repeat;
+    background: url("/static/background.jpg") center no-repeat;
 }
 
 /* Nav */
