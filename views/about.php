@@ -49,8 +49,7 @@ Copyright VAIO Library - ArchiveCMS v0.1
       <div class="title">
         <h1>About</h1>
       </div>
-      <p>The VAIO Library Archive is the ultimate all-in-one source for VAIO recovery discs and drivers.</p>
-      <p>Most of the drivers are sourced from an archive of the old Sony FTP server, and recovery discs from the Internet Archive or ourselves.</p>
+      <p>Text</p>
     </div>
   </main>
 
