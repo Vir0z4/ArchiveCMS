@@ -19,6 +19,8 @@ Requirements: PHP, MariaDB, webserver (e.g. Apache, NGINX)
 
 ### Setting up webserver
 
+Ensure ``pdo_mysql`` extension is enabled in PHP configuration file ``php.ini``.
+
 The root folder of the CMS is ``/public``.
 
 For e.g., **Apache** users, please set ``DocumentRoot`` to ``(root)/public``. For **any other users**, do the same for your webserver.
@@ -64,7 +66,7 @@ Admin user is not deletable on the user management interface of the CMS.
 
 ### config.php
 
-After setting up the SQL user and database, the SQL credentials in ``config.php`` need to be changed, as well as domain information and login session lifetime (time after which session expires). Here is an example of ``config.php`` filled in:
+After setting up the SQL user and database, the SQL credentials in ``config.php`` need to be changed, as well as domain information and login session lifetime (time after which session expires). Here is an example snippet of ``config.php`` filled in:
 
     $sessionLifetime = 2592000;                // 30 days in seconds
     $sessionCookiePath = '/';                  // Usually '/'
