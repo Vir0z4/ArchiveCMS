@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Nav */
+
+nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+nav .nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+nav .right-side {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+nav .logo img {
+  height: 40px;
+  display: block;
+  margin: 0;
+}
+
+/* Tabs */
+
+.tabs-nav {
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  background-color: #f0f0f0;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  z-index: 999;
+}
+
+.tab-button {
+  padding: 14px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+  border-right: 1px solid #ccc;
+  text-align: center;
+}
+
+.tab-button:hover {
+  background-color: #e0e0e0;
+}
+
+.tab-button.active {
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+  
+.tab-content.active {
+  display: block;
+}
+
+/* Page contents */
+
+main {
+  flex: 1 0 auto;
+  margin-top: 140px;
+  padding: 20px;
+}
+
+.center-container {
+  text-align: left;
+  margin-left: 7%;
+}
+
+.title h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.item table {
+  border-collapse: collapse;
+}
+
+.item th,
+.item td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  background: #f9f9f9;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.item th {
+  background: #eaeaea;
+  font-weight: bold;
+}
+
+.item td:hover {
+  background: #f1f1f1;
+}
+
+.settings-item label {
+  font-size: 18px;
+  font-family: 'Lexend Giga', sans-serif;
+  margin-right: 10px;
+}
+
+.settings-item h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.settings-item p {
+  font-size: 16px;
+  font-family: 'Lexend Giga', sans-serif;
+  margin-top: 16px;
+}
+
+.settings-item select {
+  width: 15%;
+  padding: 10px 16px;
+  margin-top: 12px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  font-family: 'Lexend Giga', sans-serif;
+}
+
+.settings-item select:focus {
+  border: 2px solid #4a4d5c;
+  background-color: #e8e8e8;
+  outline: none;
+}
+
+.settings-item textarea, .settings-item input {
+  width: 15%;
+  padding: 12px 20px;
+  margin: 12px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  font-family: 'Lexend Giga', sans-serif;
+}
+
+.settings-item textarea:focus, .settings-item input:focus {
+  border: 2px solid #4a4d5c;
+  background-color: #e8e8e8;
+  outline: none;
+}
+
+button {
+  padding: 14px 20px;
+  margin-top: 16px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background-color: #4a4d5c;
+  color: white;
+  font-size: 16px;
+  font-family: 'Lexend Giga', sans-serif;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3a3d4c;
+}
+
+/* Footer */
+
+footer {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footertext {
+  color: #4a4d5c;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Lexend Giga", sans-serif;
+}

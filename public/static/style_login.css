@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Nav */
+
+nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+nav .right-side {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+nav .logo img {
+    height: 40px;
+    display: block;
+    margin: 0;
+}
+
+/* Page contents */
+
+main {
+    flex: 1 0 auto;
+    margin-top: 60px;
+}
+
+.center-container {
+    text-align: left;
+    padding: 20px;
+    margin-top: 2%;
+    margin-left: 7%;
+}
+
+.loginform input[type="text"], input[type="password"], input[type="email"] {
+    width: 15%;
+    padding: 12px 20px;
+    margin: 12px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    font-family: 'Lexend Giga', sans-serif;
+}
+
+.loginform input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    border: 2px solid #4a4d5c;
+    background-color: #e8e8e8;
+    outline: none;
+}
+
+.loginform button {
+    width: 12vh;
+    padding: 14px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    background-color: #4a4d5c;
+    color: white;
+    font-size: 16px;
+    font-family: 'Lexend Giga', sans-serif;
+    cursor: pointer;
+}
+
+.loginform button:hover {
+    background-color: #3a3d4c;
+}
+
+/* Footer */
+
+footer {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer .footertext {
+    color: #4a4d5c;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Lexend Giga', sans-serif;
+}

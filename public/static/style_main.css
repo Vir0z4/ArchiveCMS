@@ -1,0 +1,133 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("https://archive.vaiolibrary.com/lib/tpl/dokukit/images/bg_body_V2.jpg") center no-repeat;
+}
+
+/* Nav */
+
+nav .menu {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+nav .menulink {
+    color: #4d5269;
+    text-decoration: none;
+    font-family: 'Lexend Giga', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+}
+
+nav .menulink:hover {
+    color: #656f9e;
+    text-decoration: underline;
+    transform: scale(1.2);
+    transition: transform 0.3s ease, text-decoration 0.3s ease;
+}
+
+nav .dotlink {
+    color: #4d5269;
+    text-decoration: none;
+    font-family: 'Lexend Giga', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+/* Page contents */
+
+.center-container {
+    text-align: center;
+}
+
+.logo {
+    width: 20%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-box input[type="text"] {
+    padding: 10px 10px 10px 10px;
+    width: 100vh;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    font-size: 22px;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23aaa" width="20" height="20" viewBox="0 0 24 24"%3E%3Cpath d="M10 2a8 8 0 106.32 13.9l4.4 4.4 1.41-1.41-4.4-4.4A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"%3E%3C/path%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px 20px;
+}
+
+#prestext {
+    color: #4d5269;
+    font-family: 'Lexend Giga', sans-serif;
+    margin-top: 2%;
+}
+
+.footerlink {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer .footermenu {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+footer .footerlink {
+    color: #4a4d5c;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Lexend Giga', sans-serif;
+}
+
+footer .footerlink:hover {
+    text-decoration: underline;
+}
+
+footer .footertext {
+    color: #4a4d5c;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Lexend Giga', sans-serif;
+}
