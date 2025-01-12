@@ -54,7 +54,7 @@
       <div class="item">
         <h2>Recovery Discs</h2>
         <div class="orange-box">
-          <img src="https://archive.vaiolibrary.com/lib/plugins/wrap/images/note/48/important.png" alt="Icon">
+          <img src="/static/important.png" alt="Icon">
           <p>These recovery discs are likely model locked. We are currently working on XP and lower support for Sony VAIO Recovery Patcher.</p>
         </div>
         <table>
@@ -89,7 +89,7 @@
       <div class="item">
         <h2>Third-party Driver Packs</h2>
         <div class="blue-box">
-          <img src="https://archive.vaiolibrary.com/lib/plugins/wrap/images/note/48/info.png" alt="Icon">
+          <img src="/static/info.png" alt="Icon">
           <p>Windows XP and under recovery discs contain official driver packs on the last disc.</p>
         </div>
         <table>
@@ -124,7 +124,7 @@
       <div class="item">
         <h2>Drivers</h2>
         <div class="green-box">
-          <img src="https://archive.vaiolibrary.com/lib/plugins/wrap/images/note/48/download.png" alt="Icon">
+          <img src="/static/download.png" alt="Icon">
           <p>These are downloadable direct links to mirrored driver downloads.</p>
         </div>
         <table>
@@ -159,7 +159,7 @@
       <div class="item">
         <h2>Broken Links</h2>
         <div class="red-box">
-          <img src="https://archive.vaiolibrary.com/lib/plugins/wrap/images/note/48/alert.png" alt="Icon">
+          <img src="/static/alert.png" alt="Icon">
           <p>These links are not directly downloadable, as no mirror of the download servers is available. For now, to download these files, you can copy the executable file name and search manually for it.</p>
         </div>
         <table>
