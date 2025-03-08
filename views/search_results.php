@@ -1,17 +1,25 @@
-<!-- views/search_results.php -->
 <!DOCTYPE html>
 <html lang="en">
+
+<!--
+Copyright VAIO Library - ArchiveCMS v1.1
+-->
+
 <head>
   <meta charset="UTF-8">
   <title>Search - VAIO Library Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
   <link rel="stylesheet" href="/static/style_page.css">
 </head>
 <body>
   <nav>
     <div class="nav-container">
+      <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
       <div class="logo">
         <a href="/"><img src="/static/logo.png" alt="VAIO Library Logo"></a>
       </div>
+      <label for="mobile-menu-toggle" class="hamburger">☰</label>
+      <label for="mobile-menu-toggle" class="overlay"></label>
       <div class="right-side">
         <div class="menu">
           <div class="dropdown">

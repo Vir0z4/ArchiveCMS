@@ -132,6 +132,8 @@ main {
     padding: 20px;
     margin-top: 2%;
     margin-left: 7%;
+    margin-right: 7%;
+    max-width: 86%;
 }
 
 .title h1 {
@@ -288,4 +290,131 @@ footer .footertext {
     font-size: 13px;
     font-weight: 500;
     font-family: 'Lexend Giga', sans-serif;
+}
+
+/* Mobile */
+
+.mobile-menu-toggle {
+    display: none;
+}
+  
+.hamburger {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: none;
+    }
+  
+    .hamburger {
+        display: none;
+        color: #4d5269;
+    }
+  
+    nav .right-side {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid #ccc;
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 999;
+    }
+  
+    .hamburger {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: auto;
+        padding-left: 20px;
+    }
+  
+    .mobile-menu-toggle:checked ~ .right-side {
+        display: flex;
+    }
+
+    nav .menu {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: flex-start;
+    }
+  
+    .menu .dropdown {
+        width: 100%;
+    }
+  
+    .menu .submenu {
+        position: static;
+        border: none;
+        padding-left: 15px;
+        width: 100%;
+        display: none;
+    }
+  
+    .menu .submenu a {
+        padding: 8px 0;
+        width: 100%;
+    }
+  
+    .menu .dropdown:focus-within .submenu {
+        display: block;
+    }
+  
+    .search-box {
+        width: 100%;
+        margin-top: 15px;
+    }
+  
+    .search-box form {
+        width: 100%;
+    }
+  
+    .search-box input[type="text"] {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+  
+    nav .nav-container {
+        padding: 10px 20px;
+    }
+
+    .mobile-menu-toggle:checked ~ .overlay {
+        display: block;
+    }
+    
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 998;
+    }
+
+    .overlay {
+        cursor: pointer;
+    }
+
+    .center-container {
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 15px;
+        max-width: 90%;
+    }
+    
+    .item table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
 }
