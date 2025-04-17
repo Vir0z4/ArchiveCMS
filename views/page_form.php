@@ -95,22 +95,31 @@
               <tr>
                 <th>Model</th>
                 <th>Windows</th>
-                <th>Link</th>
-                <th>Link Text</th>
+                <th>Links</th>
                 <th>Remove</th>
               </tr>
             </thead>
             <tbody>
-            <?php if ($page && !empty($page['recovery_discs'])): 
-                  foreach ($page['recovery_discs'] as $disc): ?>
-              <tr>
-                <td><input type="text" value="<?= htmlspecialchars($disc['model'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($disc['windows'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($disc['link'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($disc['link_text'] ?? '') ?>"></td>
-                <td><button type="button" class="remove-row-btn">Remove</button></td>
-              </tr>
-            <?php endforeach; endif; ?>
+              <?php if ($page && !empty($page['recovery_discs'])): 
+                foreach ($page['recovery_discs'] as $disc): ?>
+                <tr>
+                  <td><input type="text" value="<?= htmlspecialchars($disc['model'] ?? '') ?>"></td>
+                  <td><input type="text" value="<?= htmlspecialchars($disc['windows'] ?? '') ?>"></td>
+                  <td class="links-cell">
+                    <div class="links-container">
+                      <?php foreach ($disc['links'] ?? [] as $link): ?>
+                        <div class="link-entry">
+                          <input type="text" placeholder="URL" value="<?= htmlspecialchars($link['url'] ?? '') ?>">
+                          <input type="text" placeholder="Text" value="<?= htmlspecialchars($link['text'] ?? '') ?>">
+                          <button type="button" class="remove-link-btn">Remove</button>
+                        </div>
+                      <?php endforeach; ?>
+                    </div>
+                    <button type="button" class="add-link-btn">Add Link</button>
+                  </td>
+                  <td><button type="button" class="remove-row-btn">Remove</button></td>
+                </tr>
+              <?php endforeach; endif; ?>
             </tbody>
           </table>
           <button type="button" id="add-recovery-disc">Add Recovery Disc</button>
@@ -136,22 +145,31 @@
               <tr>
                 <th>Model</th>
                 <th>Description</th>
-                <th>Link</th>
-                <th>Link Text</th>
+                <th>Links</th>
                 <th>Remove</th>
               </tr>
             </thead>
             <tbody>
-            <?php if ($page && !empty($page['driver_packs'])):
-                  foreach ($page['driver_packs'] as $pack): ?>
-              <tr>
-                <td><input type="text" value="<?= htmlspecialchars($pack['model'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($pack['description'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($pack['link'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($pack['link_text'] ?? '') ?>"></td>
-                <td><button type="button" class="remove-row-btn">Remove</button></td>
-              </tr>
-            <?php endforeach; endif; ?>
+              <?php if ($page && !empty($page['driver_packs'])): 
+                foreach ($page['driver_packs'] as $pack): ?>
+                <tr>
+                  <td><input type="text" value="<?= htmlspecialchars($pack['model'] ?? '') ?>"></td>
+                  <td><input type="text" value="<?= htmlspecialchars($pack['description'] ?? '') ?>"></td>
+                  <td class="links-cell">
+                    <div class="links-container">
+                      <?php foreach ($pack['links'] ?? [] as $link): ?>
+                        <div class="link-entry">
+                          <input type="text" placeholder="URL" value="<?= htmlspecialchars($link['url'] ?? '') ?>">
+                          <input type="text" placeholder="Text" value="<?= htmlspecialchars($link['text'] ?? '') ?>">
+                          <button type="button" class="remove-link-btn">Remove</button>
+                        </div>
+                      <?php endforeach; ?>
+                    </div>
+                    <button type="button" class="add-link-btn">Add Link</button>
+                  </td>
+                  <td><button type="button" class="remove-row-btn">Remove</button></td>
+                </tr>
+              <?php endforeach; endif; ?>
             </tbody>
           </table>
           <button type="button" id="add-driver-pack">Add Driver Pack</button>
@@ -177,22 +195,31 @@
               <tr>
                 <th>Type</th>
                 <th>Description</th>
-                <th>Link</th>
-                <th>Link Text</th>
+                <th>Links</th>
                 <th>Remove</th>
               </tr>
             </thead>
             <tbody>
-            <?php if ($page && !empty($page['drivers'])):
-                  foreach ($page['drivers'] as $drv): ?>
-              <tr>
-                <td><input type="text" value="<?= htmlspecialchars($drv['type'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($drv['description'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($drv['link'] ?? '') ?>"></td>
-                <td><input type="text" value="<?= htmlspecialchars($drv['link_text'] ?? '') ?>"></td>
-                <td><button type="button" class="remove-row-btn">Remove</button></td>
-              </tr>
-            <?php endforeach; endif; ?>
+              <?php if ($page && !empty($page['drivers'])): 
+                foreach ($page['drivers'] as $drv): ?>
+                <tr>
+                  <td><input type="text" value="<?= htmlspecialchars($drv['type'] ?? '') ?>"></td>
+                  <td><input type="text" value="<?= htmlspecialchars($drv['description'] ?? '') ?>"></td>
+                  <td class="links-cell">
+                    <div class="links-container">
+                      <?php foreach ($drv['links'] ?? [] as $link): ?>
+                        <div class="link-entry">
+                          <input type="text" placeholder="URL" value="<?= htmlspecialchars($link['url'] ?? '') ?>">
+                          <input type="text" placeholder="Text" value="<?= htmlspecialchars($link['text'] ?? '') ?>">
+                          <button type="button" class="remove-link-btn">Remove</button>
+                        </div>
+                      <?php endforeach; ?>
+                    </div>
+                    <button type="button" class="add-link-btn">Add Link</button>
+                  </td>
+                  <td><button type="button" class="remove-row-btn">Remove</button></td>
+                </tr>
+              <?php endforeach; endif; ?>
             </tbody>
           </table>
           <button type="button" id="add-driver">Add Driver</button>

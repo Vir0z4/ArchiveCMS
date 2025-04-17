@@ -84,10 +84,13 @@ Copyright VAIO Library - ArchiveCMS v1.2
               <td><?= htmlspecialchars($disc['model']) ?></td>
               <td><?= htmlspecialchars($disc['windows']) ?></td>
               <td>
-                <?php if (!empty($disc['link'])): ?>
-                  <a href="<?= htmlspecialchars($disc['link']) ?>">
-                    <?= htmlspecialchars($disc['link_text'] ?? 'Download') ?>
-                  </a>
+                <?php if (!empty($disc['links'])): ?>
+                  <?php foreach ($disc['links'] as $index => $link): ?>
+                    <?php if ($index > 0): ?> - <?php endif; ?>
+                    <a href="<?= htmlspecialchars($link['url']) ?>">
+                      <?= htmlspecialchars($link['text'] ?? 'Download') ?>
+                    </a>
+                  <?php endforeach; ?>
                 <?php else: ?>
                   N/A
                 <?php endif; ?>
@@ -121,10 +124,13 @@ Copyright VAIO Library - ArchiveCMS v1.2
               <td><?= htmlspecialchars($pack['model']) ?></td>
               <td><?= htmlspecialchars($pack['description']) ?></td>
               <td>
-                <?php if (!empty($pack['link'])): ?>
-                  <a href="<?= htmlspecialchars($pack['link']) ?>">
-                    <?= htmlspecialchars($pack['link_text'] ?? 'Download') ?>
-                  </a>
+                <?php if (!empty($pack['links'])): ?>
+                  <?php foreach ($pack['links'] as $index => $link): ?>
+                    <?php if ($index > 0): ?> - <?php endif; ?>
+                    <a href="<?= htmlspecialchars($link['url']) ?>">
+                      <?= htmlspecialchars($link['text'] ?? 'Download') ?>
+                    </a>
+                  <?php endforeach; ?>
                 <?php else: ?>
                   N/A
                 <?php endif; ?>
@@ -158,10 +164,13 @@ Copyright VAIO Library - ArchiveCMS v1.2
               <td><?= htmlspecialchars($drv['type']) ?></td>
               <td><?= htmlspecialchars($drv['description']) ?></td>
               <td>
-                <?php if (!empty($drv['link'])): ?>
-                  <a href="<?= htmlspecialchars($drv['link']) ?>">
-                    <?= htmlspecialchars($drv['link_text'] ?? 'Download') ?>
-                  </a>
+                <?php if (!empty($drv['links'])): ?>
+                  <?php foreach ($drv['links'] as $index => $link): ?>
+                    <?php if ($index > 0): ?> - <?php endif; ?>
+                    <a href="<?= htmlspecialchars($link['url']) ?>">
+                      <?= htmlspecialchars($link['text'] ?? 'Download') ?>
+                    </a>
+                  <?php endforeach; ?>
                 <?php else: ?>
                   N/A
                 <?php endif; ?>
