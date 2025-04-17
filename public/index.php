@@ -241,20 +241,28 @@ if ($requestUri === '/admin/pages/create') {
             ],
             'recovery' => [
                 'visible' => isset($_POST['box_settings']['recovery']['visible']),
-                'message' => $_POST['box_settings']['recovery']['message'] ?? '',
+                'message' => isset($_POST['box_settings']['recovery']['message']) 
+                        ? strip_tags($_POST['box_settings']['recovery']['message'], '<b><strong><em><i><u><a><code>') 
+                        : '',
             ],
             'driver_packs' => [
                 'visible' => isset($_POST['box_settings']['driver_packs']['visible']),
-                'message' => $_POST['box_settings']['driver_packs']['message'] ?? '',
+                'message' => isset($_POST['box_settings']['driver_packs']['message']) 
+                        ? strip_tags($_POST['box_settings']['driver_packs']['message'], '<b><strong><em><i><u><a><code>') 
+                        : '',
             ],
             'drivers' => [
                 'visible' => isset($_POST['box_settings']['drivers']['visible']),
-                'message' => $_POST['box_settings']['drivers']['message'] ?? '',
+                'message' => isset($_POST['box_settings']['drivers']['message']) 
+                        ? strip_tags($_POST['box_settings']['drivers']['message'], '<b><strong><em><i><u><a><code>') 
+                        : '',
             ],
             'broken_links' => [
                 'section_visible' => isset($_POST['box_settings']['broken_links']['section_visible']),
                 'visible' => isset($_POST['box_settings']['broken_links']['visible']),
-                'message' => $_POST['box_settings']['broken_links']['message'] ?? '',
+                'message' => isset($_POST['box_settings']['broken_links']['message']) 
+                        ? strip_tags($_POST['box_settings']['broken_links']['message'], '<b><strong><em><i><u><a><code>') 
+                        : '',
             ]
         ];
 

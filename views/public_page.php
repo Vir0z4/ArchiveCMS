@@ -67,7 +67,7 @@ Copyright VAIO Library - ArchiveCMS v1.2
         <?php if (!empty($page['box_settings']['recovery']['visible'])): ?>
           <div class="orange-box">
             <img src="/static/important.png" alt="Icon">
-            <p><?= htmlspecialchars($page['box_settings']['recovery']['message']) ?></p>
+            <p><?= htmlspecialchars_decode($page['box_settings']['recovery']['message']) ?></p>
           </div>
         <?php endif; ?>
         <table>
@@ -107,7 +107,7 @@ Copyright VAIO Library - ArchiveCMS v1.2
         <?php if (!empty($page['box_settings']['driver_packs']['visible'])): ?>
           <div class="blue-box">
             <img src="/static/info.png" alt="Icon">
-            <p><?= htmlspecialchars($page['box_settings']['driver_packs']['message']) ?></p>
+            <p><?= htmlspecialchars_decode($page['box_settings']['driver_packs']['message']) ?></p>
           </div>
         <?php endif; ?>
         <table>
@@ -147,13 +147,13 @@ Copyright VAIO Library - ArchiveCMS v1.2
         <?php if (!empty($page['box_settings']['drivers']['visible'])): ?>
           <div class="green-box">
             <img src="/static/download.png" alt="Icon">
-            <p><?= htmlspecialchars($page['box_settings']['drivers']['message']) ?></p>
+            <p><?= htmlspecialchars_decode($page['box_settings']['drivers']['message']) ?></p>
           </div>
         <?php endif; ?>
         <table>
           <thead>
             <tr>
-              <th>Type</th>
+              <th>Windows</th>
               <th>Description</th>
               <th>Link</th>
             </tr>
@@ -188,13 +188,13 @@ Copyright VAIO Library - ArchiveCMS v1.2
         <?php if (!empty($page['box_settings']['broken_links']['visible'])): ?>
           <div class="red-box">
             <img src="/static/alert.png" alt="Icon">
-            <p><?= htmlspecialchars($page['box_settings']['broken_links']['message']) ?></p>
+            <p><?= htmlspecialchars_decode($page['box_settings']['broken_links']['message']) ?></p>
           </div>
         <?php endif; ?>
         <table>
           <thead>
             <tr>
-              <th>Type</th>
+              <th>Windows</th>
               <th>Description</th>
               <th>EXE</th>
             </tr>

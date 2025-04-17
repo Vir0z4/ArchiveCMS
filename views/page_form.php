@@ -88,7 +88,11 @@
             </label>
             <br>
             <label>Box Message</label>
-            <textarea name="box_settings[recovery][message]" rows="3"><?= isset($page['box_settings']['recovery']['message']) ? htmlspecialchars($page['box_settings']['recovery']['message']) : 'These recovery discs are likely model locked. We are currently working on XP and lower support for Sony VAIO Recovery Patcher.' ?></textarea>
+            <textarea name="box_settings[recovery][message]" rows="3">
+              <?= isset($page['box_settings']['recovery']['message']) 
+                  ? htmlspecialchars($page['box_settings']['recovery']['message']) 
+                  : 'These recovery discs are likely model locked. We are currently working on XP and lower support for Sony VAIO Recovery Patcher.' ?>
+            </textarea>
           </div>
           <table id="recovery-discs-table">
             <thead>
@@ -138,7 +142,11 @@
             </label>
             <br>
             <label>Box Message</label>
-            <textarea name="box_settings[driver_packs][message]" rows="3"><?= isset($page['box_settings']['driver_packs']['message']) ? htmlspecialchars($page['box_settings']['driver_packs']['message']) : 'Windows XP and under recovery discs contain official driver packs on the last disc.' ?></textarea>
+            <textarea name="box_settings[driver_packs][message]" rows="3">
+              <?= isset($page['box_settings']['driver_packs']['message']) 
+                  ? htmlspecialchars($page['box_settings']['driver_packs']['message']) 
+                  : 'Windows XP and under recovery discs contain official driver packs on the last disc.' ?>
+            </textarea>
           </div>
           <table id="driver-packs-table">
             <thead>
@@ -188,7 +196,11 @@
             </label>
             <br>
             <label>Box Message</label>
-            <textarea name="box_settings[drivers][message]" rows="3"><?= isset($page['box_settings']['drivers']['message']) ? htmlspecialchars($page['box_settings']['drivers']['message']) : 'These are downloadable direct links to mirrored driver downloads.' ?></textarea>
+            <textarea name="box_settings[drivers][message]" rows="3">
+              <?= isset($page['box_settings']['drivers']['message']) 
+                  ? htmlspecialchars($page['box_settings']['drivers']['message']) 
+                  : 'These are downloadable direct links to mirrored driver downloads.' ?>
+            </textarea>
           </div>
           <table id="drivers-table">
             <thead>
@@ -245,7 +257,11 @@
             </label>
             <br>
             <label>Box Message</label>
-            <textarea name="box_settings[broken_links][message]" rows="3"><?= isset($page['box_settings']['broken_links']['message']) ? htmlspecialchars($page['box_settings']['broken_links']['message']) : 'These links are not directly downloadable, as no mirror of the download servers is available. For now, to download these files, you can copy the executable file name and search manually for it.' ?></textarea>
+            <textarea name="box_settings[broken_links][message]" rows="3">
+              <?= isset($page['box_settings']['broken_links']['message']) 
+                  ? htmlspecialchars($page['box_settings']['broken_links']['message']) 
+                  : 'These links are not directly downloadable, as no mirror of the download servers is available. For now, to download these files, you can copy the executable file name and search manually for it.' ?>
+            </textarea>
           </div>
           <table id="broken-links-table">
             <thead>
