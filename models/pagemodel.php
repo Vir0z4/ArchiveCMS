@@ -26,7 +26,7 @@ function listPagesByStatus($status) {
 /**
  * Create a new page (with sanitized data).
  */
-function createPage($slug, $title, $description, $status, $recoveryDiscs, $driverPacks, $drivers, $brokenLinks) {
+function createPage($slug, $title, $description, $status, $recoveryDiscs, $driverPacks, $drivers, $brokenLinks, $boxSettings) {
     global $pdo;
 
     // Check if slug already exists
@@ -35,8 +35,8 @@ function createPage($slug, $title, $description, $status, $recoveryDiscs, $drive
     }
 
     $sql = "INSERT INTO pages 
-        (slug, title, description, status, last_modified, recovery_discs, driver_packs, drivers, broken_links)
-        VALUES (:slug, :title, :description, :status, NOW(), :rd, :dp, :dr, :bl)";
+        (slug, title, description, status, last_modified, recovery_discs, driver_packs, drivers, broken_links, box_settings)
+        VALUES (:slug, :title, :description, :status, NOW(), :rd, :dp, :dr, :bl, :bs)";
 
     $stmt = $pdo->prepare($sql);
     $success = $stmt->execute([
@@ -47,7 +47,8 @@ function createPage($slug, $title, $description, $status, $recoveryDiscs, $drive
         'rd'         => json_encode($recoveryDiscs),
         'dp'         => json_encode($driverPacks),
         'dr'         => json_encode($drivers),
-        'bl'         => json_encode($brokenLinks)
+        'bl'         => json_encode($brokenLinks),
+        'bs'         => json_encode($boxSettings)
     ]);
     return $success ? [true, null] : [false, "Failed to insert page."];
 }
@@ -55,7 +56,7 @@ function createPage($slug, $title, $description, $status, $recoveryDiscs, $drive
 /**
  * Update an existing page.
  */
-function updatePage($oldSlug, $newSlug, $title, $description, $status, $recoveryDiscs, $driverPacks, $drivers, $brokenLinks) {
+function updatePage($oldSlug, $newSlug, $title, $description, $status, $recoveryDiscs, $driverPacks, $drivers, $brokenLinks, $boxSettings) {
     global $pdo;
 
     // Check old slug
@@ -72,17 +73,18 @@ function updatePage($oldSlug, $newSlug, $title, $description, $status, $recovery
     }
 
     $sql = "UPDATE pages
-            SET slug = :newSlug,
-                title = :title,
-                description = :description,
-                status = :status,
-                last_modified = NOW(),
-                recovery_discs = :rd,
-                driver_packs = :dp,
-                drivers = :dr,
-                broken_links = :bl
-            WHERE slug = :oldSlug
-            LIMIT 1";
+    SET slug = :newSlug,
+        title = :title,
+        description = :description,
+        status = :status,
+        last_modified = NOW(),
+        recovery_discs = :rd,
+        driver_packs = :dp,
+        drivers = :dr,
+        broken_links = :bl,
+        box_settings = :bs
+    WHERE slug = :oldSlug
+    LIMIT 1";
     $stmt = $pdo->prepare($sql);
     $success = $stmt->execute([
         'newSlug'    => $newSlug,
@@ -93,6 +95,7 @@ function updatePage($oldSlug, $newSlug, $title, $description, $status, $recovery
         'dp'         => json_encode($driverPacks),
         'dr'         => json_encode($drivers),
         'bl'         => json_encode($brokenLinks),
+        'bs'         => json_encode($boxSettings),
         'oldSlug'    => $oldSlug
     ]);
 

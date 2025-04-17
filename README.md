@@ -13,6 +13,14 @@ Pages are created in the administration panel at ``(URL)/admin``, and are stored
 
 ArchiveCMS was specifically made for the VAIO Library, therefore it needs to be adapted to suit your needs. The project is licensed under AGPL-3.0, and is provided "as is" with no warranty of any kind.
 
+### Search system
+
+Since version v1.2, the search system has a certain level of "tolerance" for user inputs, such as:
+
+- If the user inputs "PCG-FX590" and there is a "PCG-FX" page, the user is redirected to the "PCG-FX" page.
+- If the user inputs "PCG-Z" and there is a "PCG-Z" and a "PCG-Z505" page, it does not redirect to either of those pages and shows search results normally.
+- If the user inputs "VPCZ" and there is a "VPCZ1" and a "VPCZ2" page, it does not redirect to either of those pages and shows search results normally.
+
 ## Configuration
 
 Requirements: PHP, MariaDB, webserver (e.g. Apache, NGINX)
@@ -51,7 +59,8 @@ First, create a SQL user. Then create a database with the name of your choice. T
       `recovery_discs` TEXT DEFAULT NULL,
       `driver_packs` TEXT DEFAULT NULL,
       `drivers` TEXT DEFAULT NULL,
-      `broken_links` TEXT DEFAULT NULL
+      `broken_links` TEXT DEFAULT NULL,
+      `box_settings` JSON NOT NULL DEFAULT '{}'
     );
 
 Adding admin user requires a BCRYPT hashed password. After creating a hash for the admin password, use this command to add the admin user:

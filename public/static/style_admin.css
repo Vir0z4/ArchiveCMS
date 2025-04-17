@@ -196,6 +196,78 @@ button:hover {
   background-color: #3a3d4c;
 }
 
+.box-settings {
+  background: #f8f8f8;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 16px 0;
+  width: 25%;
+}
+
+.box-settings label {
+  font-size: 14px;
+  font-family: 'Lexend Giga', sans-serif;
+}
+
+.toggle-group {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  font-family: 'Lexend Giga', sans-serif;
+}
+
+.toggle-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  accent-color: #4a4d5c;
+}
+
+.section-toggle h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #4a4d5c;
+}
+
+.box-settings textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 12px 0;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: 'Lexend Giga', sans-serif;
+  font-size: 16px;
+  min-height: 100px;
+}
+
+.box-settings input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 12px 0;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: 'Lexend Giga', sans-serif;
+  font-size: 16px;
+}
+
+.box-settings textarea:focus,
+.box-settings input[type="text"]:focus {
+  border: 2px solid #4a4d5c;
+  background-color: #f8f8f8;
+  outline: none;
+}
+
+.section-toggle {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
 /* Footer */
 
 footer {

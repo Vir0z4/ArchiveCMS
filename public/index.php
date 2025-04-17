@@ -234,6 +234,30 @@ if ($requestUri === '/admin/pages/create') {
         $drivers        = json_decode($_POST['drivers_json'] ?? '[]', true) ?: [];
         $broken_links   = json_decode($_POST['broken_links_json'] ?? '[]', true) ?: [];
 
+        $boxSettings = [
+            'back_link' => [
+                'visible' => isset($_POST['box_settings']['back_link']['visible']),
+                'custom_text' => $_POST['box_settings']['back_link']['custom_text'] ?? '',
+            ],
+            'recovery' => [
+                'visible' => isset($_POST['box_settings']['recovery']['visible']),
+                'message' => $_POST['box_settings']['recovery']['message'] ?? '',
+            ],
+            'driver_packs' => [
+                'visible' => isset($_POST['box_settings']['driver_packs']['visible']),
+                'message' => $_POST['box_settings']['driver_packs']['message'] ?? '',
+            ],
+            'drivers' => [
+                'visible' => isset($_POST['box_settings']['drivers']['visible']),
+                'message' => $_POST['box_settings']['drivers']['message'] ?? '',
+            ],
+            'broken_links' => [
+                'section_visible' => isset($_POST['box_settings']['broken_links']['section_visible']),
+                'visible' => isset($_POST['box_settings']['broken_links']['visible']),
+                'message' => $_POST['box_settings']['broken_links']['message'] ?? '',
+            ]
+        ];
+
         if (!$slug) {
             http_response_code(400);
             echo "Error: Slug cannot be empty.";
@@ -247,7 +271,7 @@ if ($requestUri === '/admin/pages/create') {
 
         [$success, $err] = createPage($slug, $title, $description, $status, 
                                       $recovery_discs, $driver_packs, 
-                                      $drivers, $broken_links);
+                                      $drivers, $broken_links, $boxSettings);
         if (!$success) {
             http_response_code(400);
             echo "Server Error";
@@ -293,10 +317,34 @@ if (preg_match($patternEdit, $requestUri, $matches)) {
         $drivers        = json_decode($_POST['drivers_json'] ?? '[]', true) ?: [];
         $broken_links   = json_decode($_POST['broken_links_json'] ?? '[]', true) ?: [];
 
+        $boxSettings = [
+            'back_link' => [
+                'visible' => isset($_POST['box_settings']['back_link']['visible']),
+                'custom_text' => $_POST['box_settings']['back_link']['custom_text'] ?? '',
+            ],
+            'recovery' => [
+                'visible' => isset($_POST['box_settings']['recovery']['visible']),
+                'message' => $_POST['box_settings']['recovery']['message'] ?? '',
+            ],
+            'driver_packs' => [
+                'visible' => isset($_POST['box_settings']['driver_packs']['visible']),
+                'message' => $_POST['box_settings']['driver_packs']['message'] ?? '',
+            ],
+            'drivers' => [
+                'visible' => isset($_POST['box_settings']['drivers']['visible']),
+                'message' => $_POST['box_settings']['drivers']['message'] ?? '',
+            ],
+            'broken_links' => [
+                'section_visible' => isset($_POST['box_settings']['broken_links']['section_visible']),
+                'visible' => isset($_POST['box_settings']['broken_links']['visible']),
+                'message' => $_POST['box_settings']['broken_links']['message'] ?? '',
+            ]
+        ];
+
         [$success, $err] = updatePage($oldSlug, $newSlug, $title, 
                                       $description, $status, 
                                       $recovery_discs, $driver_packs, 
-                                      $drivers, $broken_links);
+                                      $drivers, $broken_links, $boxSettings);
         if (!$success) {
             http_response_code(400);
             echo "Server Error";
@@ -311,6 +359,7 @@ if (preg_match($patternEdit, $requestUri, $matches)) {
         $page['driver_packs']   = json_decode($page['driver_packs'], true)   ?: [];
         $page['drivers']        = json_decode($page['drivers'], true)        ?: [];
         $page['broken_links']   = json_decode($page['broken_links'], true)   ?: [];
+        $page['box_settings']   = json_decode($page['box_settings'], true)   ?: [];
 
         $csrfToken = generateCSRFToken();
         render('page_form', ['page' => $page, 'csrfToken' => $csrfToken]);
@@ -351,6 +400,7 @@ if (preg_match($patternPage, $requestUri, $matches)) {
     $page['driver_packs']   = json_decode($page['driver_packs'], true)   ?: [];
     $page['drivers']        = json_decode($page['drivers'], true)        ?: [];
     $page['broken_links']   = json_decode($page['broken_links'], true)   ?: [];
+    $page['box_settings']   = json_decode($page['box_settings'], true)   ?: [];
 
     render('public_page', ['page' => $page]);
     exit;
@@ -368,18 +418,51 @@ if ($requestUri === '/search') {
     $pagesDict = loadAllPages();  // slug => row
     $allPages = array_values($pagesDict);
 
-    // Check exact match
+    // Check for exact matches (case-insensitive)
+    $exactMatches = [];
     foreach ($allPages as $p) {
         if (mb_strtolower($p['title']) === $queryLower) {
-            header('Location: /pages/' . urlencode($p['slug']));
+            $exactMatches[] = $p;
+        }
+    }
+
+    if (!empty($exactMatches)) {
+        // Check if any other pages have titles starting with the query
+        $prefixPages = [];
+        $queryLength = mb_strlen($queryLower);
+        foreach ($allPages as $p) {
+            $lowerTitle = mb_strtolower($p['title']);
+            if ($lowerTitle === $queryLower) continue; // Skip exact matches
+            if (mb_substr($lowerTitle, 0, $queryLength) === $queryLower) {
+                $prefixPages[] = $p;
+            }
+        }
+        if (empty($prefixPages)) {
+            // Redirect to the first exact match
+            header('Location: /pages/' . urlencode($exactMatches[0]['slug']));
+            exit;
+        }
+    } else {
+        // Check for pages where title is a prefix of the query
+        $prefixOfQuery = [];
+        foreach ($allPages as $p) {
+            $lowerTitle = mb_strtolower($p['title']);
+            $titleLength = mb_strlen($lowerTitle);
+            if ($titleLength === 0) continue;
+            if (mb_strlen($queryLower) >= $titleLength && mb_substr($queryLower, 0, $titleLength) === $lowerTitle) {
+                $prefixOfQuery[] = $p;
+            }
+        }
+        if (count($prefixOfQuery) === 1) {
+            header('Location: /pages/' . urlencode($prefixOfQuery[0]['slug']));
             exit;
         }
     }
 
-    // Partial matches
+    // Partial matches (title contains the query)
     $matches = [];
     foreach ($allPages as $p) {
-        if (strpos(mb_strtolower($p['title']), $queryLower) !== false) {
+        if (mb_strpos(mb_strtolower($p['title']), $queryLower) !== false) {
             $matches[] = $p;
         }
     }

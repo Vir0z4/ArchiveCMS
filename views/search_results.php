@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!--
-Copyright VAIO Library - ArchiveCMS v1.1
+Copyright VAIO Library - ArchiveCMS v1.2
 -->
 
 <head>

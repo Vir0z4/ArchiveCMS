@@ -197,7 +197,7 @@
         </div>
         <div class="settings-item">
           <label for="settings-dropdown">Style: not yet implemented</label>
-          <p>ArchiveCMS<br>v1.1 PHP</p>
+          <p>ArchiveCMS<br>v1.2 PHP</p>
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!--
-Copyright VAIO Library - ArchiveCMS v1.1
+Copyright VAIO Library - ArchiveCMS v1.2
 -->
 
 <head>
@@ -51,21 +51,25 @@ Copyright VAIO Library - ArchiveCMS v1.1
       <div class="title">
         <h1><?= htmlspecialchars($page['title']) ?></h1>
         <p><?= htmlspecialchars($page['description']) ?></p>
-        <p>Back to 
-          <a href="https://vaiolibrary.com/<?= urlencode($page['title']) ?>">
-            <?= htmlspecialchars($page['title']) ?>
-          </a> 
-          Library page.
-        </p>
+        <?php if (!empty($page['box_settings']['back_link']['visible'])): ?>
+          <p>
+            <?= !empty($page['box_settings']['back_link']['custom_text'])
+                ? htmlspecialchars($page['box_settings']['back_link']['custom_text'])
+                : 'Back to <a href="https://vaiolibrary.com/'.urlencode($page['title']).'">'.htmlspecialchars($page['title']).'</a> Library page.' 
+            ?>
+          </p>
+        <?php endif; ?>
       </div>
 
       <!-- Recovery Discs -->
       <div class="item">
         <h2>Recovery Discs</h2>
-        <div class="orange-box">
-          <img src="/static/important.png" alt="Icon">
-          <p>These recovery discs are likely model locked. We are currently working on XP and lower support for Sony VAIO Recovery Patcher.</p>
-        </div>
+        <?php if (!empty($page['box_settings']['recovery']['visible'])): ?>
+          <div class="orange-box">
+            <img src="/static/important.png" alt="Icon">
+            <p><?= htmlspecialchars($page['box_settings']['recovery']['message']) ?></p>
+          </div>
+        <?php endif; ?>
         <table>
           <thead>
             <tr>
@@ -97,10 +101,12 @@ Copyright VAIO Library - ArchiveCMS v1.1
       <!-- Third-party Driver Packs -->
       <div class="item">
         <h2>Third-party Driver Packs</h2>
-        <div class="blue-box">
-          <img src="/static/info.png" alt="Icon">
-          <p>Windows XP and under recovery discs contain official driver packs on the last disc.</p>
-        </div>
+        <?php if (!empty($page['box_settings']['driver_packs']['visible'])): ?>
+          <div class="blue-box">
+            <img src="/static/info.png" alt="Icon">
+            <p><?= htmlspecialchars($page['box_settings']['driver_packs']['message']) ?></p>
+          </div>
+        <?php endif; ?>
         <table>
           <thead>
             <tr>
@@ -132,10 +138,12 @@ Copyright VAIO Library - ArchiveCMS v1.1
       <!-- Drivers -->
       <div class="item">
         <h2>Drivers</h2>
-        <div class="green-box">
-          <img src="/static/download.png" alt="Icon">
-          <p>These are downloadable direct links to mirrored driver downloads.</p>
-        </div>
+        <?php if (!empty($page['box_settings']['drivers']['visible'])): ?>
+          <div class="green-box">
+            <img src="/static/download.png" alt="Icon">
+            <p><?= htmlspecialchars($page['box_settings']['drivers']['message']) ?></p>
+          </div>
+        <?php endif; ?>
         <table>
           <thead>
             <tr>
@@ -165,12 +173,15 @@ Copyright VAIO Library - ArchiveCMS v1.1
       </div>
 
       <!-- Broken Links -->
+      <?php if (!empty($page['box_settings']['broken_links']['section_visible'])): ?>
       <div class="item">
         <h2>Broken Links</h2>
-        <div class="red-box">
-          <img src="/static/alert.png" alt="Icon">
-          <p>These links are not directly downloadable, as no mirror of the download servers is available. For now, to download these files, you can copy the executable file name and search manually for it.</p>
-        </div>
+        <?php if (!empty($page['box_settings']['broken_links']['visible'])): ?>
+          <div class="red-box">
+            <img src="/static/alert.png" alt="Icon">
+            <p><?= htmlspecialchars($page['box_settings']['broken_links']['message']) ?></p>
+          </div>
+        <?php endif; ?>
         <table>
           <thead>
             <tr>
@@ -191,6 +202,7 @@ Copyright VAIO Library - ArchiveCMS v1.1
         </table>
         <br>
       </div>
+      <?php endif; ?>
     </div>
   </main>
 

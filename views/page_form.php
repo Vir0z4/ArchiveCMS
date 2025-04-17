@@ -60,11 +60,36 @@
             </select>
           <br><br>
 
+          <!-- Library Link -->
+          <label for="library_link">Library Link</label><br>
+          <label>
+          <input type="checkbox" style="width: 0.5%;"
+                name="box_settings[back_link][visible]" 
+                <?= (!$page || (isset($page['box_settings']['back_link']['visible']) && $page['box_settings']['back_link']['visible'])) ? 'checked' : '' ?>>
+            Show
+          </label>
+          <br>
+          <input type="text" 
+                name="box_settings[back_link][custom_text]" 
+                placeholder="Leave empty"
+                value="<?= isset($page['box_settings']['back_link']['custom_text']) ? htmlspecialchars($page['box_settings']['back_link']['custom_text']) : '' ?>">
+
         </div>
 
         <!-- Recovery Discs -->
         <div class="item">
           <h2>Recovery Discs</h2>
+          <div class="box-settings">
+            <label>
+            <input type="checkbox" 
+                  name="box_settings[recovery][visible]" 
+                  <?= (!$page || (isset($page['box_settings']['recovery']['visible']) && $page['box_settings']['recovery']['visible'])) ? 'checked' : '' ?>>
+              Show Box
+            </label>
+            <br>
+            <label>Box Message</label>
+            <textarea name="box_settings[recovery][message]" rows="3"><?= isset($page['box_settings']['recovery']['message']) ? htmlspecialchars($page['box_settings']['recovery']['message']) : 'These recovery discs are likely model locked. We are currently working on XP and lower support for Sony VAIO Recovery Patcher.' ?></textarea>
+          </div>
           <table id="recovery-discs-table">
             <thead>
               <tr>
@@ -95,6 +120,17 @@
         <!-- Driver Packs -->
         <div class="item">
           <h2>Driver Packs</h2>
+          <div class="box-settings">
+            <label>
+            <input type="checkbox" 
+                  name="box_settings[driver_packs][visible]" 
+                  <?= (!$page || (isset($page['box_settings']['driver_packs']['visible']) && $page['box_settings']['driver_packs']['visible'])) ? 'checked' : '' ?>>
+              Show Box
+            </label>
+            <br>
+            <label>Box Message</label>
+            <textarea name="box_settings[driver_packs][message]" rows="3"><?= isset($page['box_settings']['driver_packs']['message']) ? htmlspecialchars($page['box_settings']['driver_packs']['message']) : 'Windows XP and under recovery discs contain official driver packs on the last disc.' ?></textarea>
+          </div>
           <table id="driver-packs-table">
             <thead>
               <tr>
@@ -125,6 +161,17 @@
         <!-- Drivers -->
         <div class="item">
           <h2>Drivers</h2>
+          <div class="box-settings">
+            <label>
+            <input type="checkbox" 
+                  name="box_settings[drivers][visible]" 
+                  <?= (!$page || (isset($page['box_settings']['drivers']['visible']) && $page['box_settings']['drivers']['visible'])) ? 'checked' : '' ?>>
+              Show Box
+            </label>
+            <br>
+            <label>Box Message</label>
+            <textarea name="box_settings[drivers][message]" rows="3"><?= isset($page['box_settings']['drivers']['message']) ? htmlspecialchars($page['box_settings']['drivers']['message']) : 'These are downloadable direct links to mirrored driver downloads.' ?></textarea>
+          </div>
           <table id="drivers-table">
             <thead>
               <tr>
@@ -155,6 +202,24 @@
         <!-- Broken Links -->
         <div class="item">
           <h2>Broken Links</h2>
+          <div class="box-settings">
+            <label>
+              <input type="checkbox" 
+                    name="box_settings[broken_links][section_visible]" 
+                    <?= (!$page || (isset($page['box_settings']['broken_links']['section_visible']) && $page['box_settings']['broken_links']['section_visible'])) ? 'checked' : '' ?>>
+              Show Broken Links Section
+            </label>
+            <br>
+            <label>
+            <input type="checkbox" 
+                  name="box_settings[broken_links][visible]" 
+                  <?= (!$page || (isset($page['box_settings']['broken_links']['visible']) && $page['box_settings']['broken_links']['visible'])) ? 'checked' : '' ?>>
+              Show Box
+            </label>
+            <br>
+            <label>Box Message</label>
+            <textarea name="box_settings[broken_links][message]" rows="3"><?= isset($page['box_settings']['broken_links']['message']) ? htmlspecialchars($page['box_settings']['broken_links']['message']) : 'These links are not directly downloadable, as no mirror of the download servers is available. For now, to download these files, you can copy the executable file name and search manually for it.' ?></textarea>
+          </div>
           <table id="broken-links-table">
             <thead>
               <tr>

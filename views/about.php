@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!--
-Copyright VAIO Library - ArchiveCMS v1.1
+Copyright VAIO Library - ArchiveCMS v1.2
 -->
 
 <head>
@@ -52,6 +52,7 @@ Copyright VAIO Library - ArchiveCMS v1.1
       <div class="title">
         <h1>About</h1>
       </div>
+      <br>
       <p>Text</p>
     </div>
   </main>
