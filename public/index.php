@@ -17,7 +17,8 @@ function render($viewName, array $vars = []) {
 
 // Basic input sanitization function
 function sanitizeString($value) {
-    return trim(filter_var($value, FILTER_SANITIZE_STRING));
+    $allowedTags = '<b><strong><em><i><u><a><code><br>';
+    return trim(strip_tags($value, $allowedTags));
 }
 
 // Basic path-based routing
@@ -223,9 +224,13 @@ if ($requestUri === '/admin/pages/create') {
             exit;
         }
 
+        $allowedTags = '<b><strong><em><i><u><a><code><br>';
+
         $slug        = sanitizeString($_POST['slug'] ?? '');
         $title       = sanitizeString($_POST['title'] ?? '');
-        $description = trim($_POST['description'] ?? '');
+        $description = isset($_POST['description']) 
+                    ? strip_tags(trim($_POST['description']), $allowedTags)
+                    : '';
         $status      = ($_POST['status'] === 'Active') ? 'Active' : 'Inactive'; // safe-check
 
         // JSON fields
@@ -314,9 +319,13 @@ if (preg_match($patternEdit, $requestUri, $matches)) {
             exit;
         }
 
+        $allowedTags = '<b><strong><em><i><u><a><code><br>';
+
         $newSlug     = sanitizeString($_POST['slug'] ?? $oldSlug);
         $title       = sanitizeString($_POST['title'] ?? $page['title']);
-        $description = trim($_POST['description'] ?? $page['description']);
+        $description = isset($_POST['description'])
+                ? strip_tags(trim($_POST['description']), $allowedTags)
+                : strip_tags($page['description'], $allowedTags);
         $status      = ($_POST['status'] === 'Active') ? 'Active' : 'Inactive';
 
         // JSON fields

@@ -355,6 +355,7 @@ footer .footertext {
         padding-left: 15px;
         width: 100%;
         display: none;
+        margin-top: 8px;
     }
   
     .menu .submenu a {
