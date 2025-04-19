@@ -432,10 +432,10 @@ if ($requestUri === '/search') {
     }
     $queryLower = mb_strtolower($query);
 
-    $pagesDict = loadAllPages();  // slug => row
+    $pagesDict = loadAllPages();
     $allPages = array_values($pagesDict);
 
-    // Check for exact matches (case-insensitive)
+    // Check for exact matches
     $exactMatches = [];
     foreach ($allPages as $p) {
         if (mb_strtolower($p['title']) === $queryLower) {
@@ -444,50 +444,58 @@ if ($requestUri === '/search') {
     }
 
     if (!empty($exactMatches)) {
-        // Check if any other pages have titles starting with the query
+        // Check if any pages start with the query (excluding exact matches)
         $prefixPages = [];
-        $queryLength = mb_strlen($queryLower);
         foreach ($allPages as $p) {
             $lowerTitle = mb_strtolower($p['title']);
             if ($lowerTitle === $queryLower) continue; // Skip exact matches
-            if (mb_substr($lowerTitle, 0, $queryLength) === $queryLower) {
+            if (mb_strpos($lowerTitle, $queryLower) === 0) {
                 $prefixPages[] = $p;
             }
         }
-        if (empty($prefixPages)) {
-            // Redirect to the first exact match
-            header('Location: /pages/' . urlencode($exactMatches[0]['slug']));
+
+        if (!empty($prefixPages)) {
+            // Show results (exact + prefix matches)
+            $matches = array_merge($exactMatches, $prefixPages);
+            render('search_results', ['query' => $query, 'matches' => $matches]);
             exit;
-        }
-    } else {
-        // Check for pages where title is a prefix of the query
-        $prefixOfQuery = [];
-        foreach ($allPages as $p) {
-            $lowerTitle = mb_strtolower($p['title']);
-            $titleLength = mb_strlen($lowerTitle);
-            if ($titleLength === 0) continue;
-            if (mb_strlen($queryLower) >= $titleLength && mb_substr($queryLower, 0, $titleLength) === $lowerTitle) {
-                $prefixOfQuery[] = $p;
-            }
-        }
-        if (count($prefixOfQuery) === 1) {
-            header('Location: /pages/' . urlencode($prefixOfQuery[0]['slug']));
+        } else {
+            // No other prefixes → redirect to exact match
+            header('Location: /pages/' . urlencode($exactMatches[0]['slug']));
             exit;
         }
     }
 
-    // Partial matches (title contains the query)
+    // Check for pages where the query starts with their title (longest prefix)
+    $prefixOfQuery = [];
+    foreach ($allPages as $p) {
+        $lowerTitle = mb_strtolower($p['title']);
+        $titleLength = mb_strlen($lowerTitle);
+        if ($titleLength === 0) continue;
+        if (mb_strpos($queryLower, $lowerTitle) === 0) {
+            $prefixOfQuery[] = $p;
+        }
+    }
+
+    // Prioritize longest prefix
+    if (!empty($prefixOfQuery)) {
+        usort($prefixOfQuery, function ($a, $b) {
+            return mb_strlen($b['title']) <=> mb_strlen($a['title']);
+        });
+        $longestMatch = $prefixOfQuery[0];
+        header('Location: /pages/' . urlencode($longestMatch['slug']));
+        exit;
+    }
+
+    // Fallback: Partial matches
     $matches = [];
     foreach ($allPages as $p) {
-        if (mb_strpos(mb_strtolower($p['title']), $queryLower) !== false) {
+        if (mb_stripos($p['title'], $query) !== false) {
             $matches[] = $p;
         }
     }
 
-    render('search_results', [
-        'query'   => $query,
-        'matches' => $matches
-    ]);
+    render('search_results', ['query' => $query, 'matches' => $matches]);
     exit;
 }
 
