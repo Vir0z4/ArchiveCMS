@@ -53,10 +53,14 @@ Copyright VAIO Library - ArchiveCMS v1.2
         <p><?= htmlspecialchars_decode($page['description']) ?></p>
         <?php if (!empty($page['box_settings']['back_link']['visible'])): ?>
           <p>
-            <?= !empty($page['box_settings']['back_link']['custom_text'])
-                ? htmlspecialchars($page['box_settings']['back_link']['custom_text'])
-                : 'Go to <a href="https://vaiolibrary.com/'.urlencode($page['title']).'">'.htmlspecialchars($page['title']).'</a> Library page.' 
+            <?php
+              $slug = !empty($page['box_settings']['back_link']['custom_text'])
+                ? $page['box_settings']['back_link']['custom_text']
+                : $page['title'];
+              $href = 'https://vaiolibrary.com/' . urlencode($slug);
+              $label = htmlspecialchars($page['title']);
             ?>
+            Go to <a href="<?= $href ?>"><?= $label ?></a> Library page.
           </p>
         <?php endif; ?>
       </div>

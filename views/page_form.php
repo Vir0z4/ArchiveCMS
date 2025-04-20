@@ -71,7 +71,7 @@
           <br>
           <input type="text" 
                 name="box_settings[back_link][custom_text]" 
-                placeholder="Leave empty"
+                placeholder="Page name if Library != Archive"
                 value="<?= isset($page['box_settings']['back_link']['custom_text']) ? htmlspecialchars($page['box_settings']['back_link']['custom_text']) : '' ?>">
 
         </div>
